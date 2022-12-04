@@ -1,15 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API 5 Day Weather Dashboard</title>
     <link rel="stylesheet" href="./Assets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
-<body>
-    
 
-    <script src ="./Assets/script.js"></script>
+<body class="container is-fluid block has-background-grey-light">
+
+    <header class="has-background-link has-text-white is-size-3 has-text-centered block">
+        <h1>5 Day Weather Dashboard</h1>
+    </header>
+
+    <div class="box columns is-flex-direction-column is-align-items-center">
+        
+        <section class="block column">
+            <h1>Choose a City:</h1>
+            <textarea></textarea>
+            <button class="button is-dark btn" id="aBtn">Search</button>
+        </section>
+
+        <section class="block">
+            <button class="button is-dark btn" id="aBtn">Atlanta</button>
+            <button class="button is-dark btn" id="aBtn">Chicago</button>
+            <button class="button is-dark btn" id="aBtn">Dallas</button>
+            <button class="button is-dark btn" id="aBtn">Denver</button>
+            <button class="button is-dark btn" id="aBtn">Minneapolis</button>
+            <button class="button is-dark btn" id="aBtn">New York</button>
+            <button class="button is-dark btn" id="aBtn">St. Paul</button>
+        </section>
+
+    </div>      
+        
+    <div class = "box columns is-flex-direction-column is-align-items-center">
+        <section class="block column">
+            <h1>City Name (Date)</h1>
+            <h3>Temp: </h3>
+            <h3>Wind: </h3>
+            <h3>Humidity: </h3>
+        </section>
+
+        <section class="block columns box">
+            <div>
+            <h1>5-Day Forecast:</h1>
+            </div>
+            <div class ="box block">
+                <h1>Date1</h1>
+                <h3>Temp: </h3>
+                <h3>Wind: </h3>
+                <h3>Humidity: </h3>
+            </div>
+            <div class ="box block">
+                <h1>Date2</h1>
+                <h3>Temp: </h3>
+                <h3>Wind: </h3>
+                <h3>Humidity: </h3>
+            </div>
+            <div class ="box block">
+                <h1>Date3</h1>
+                <h3>Temp: </h3>
+                <h3>Wind: </h3>
+                <h3>Humidity: </h3>
+            </div>
+            <div class ="box block">
+                <h1>Date4</h1>
+                <h3>Temp: </h3>
+                <h3>Wind: </h3>
+                <h3>Humidity: </h3>
+            </div>
+            <div class ="box block">
+                <h1>Date5</h1>
+                <h3>Temp: </h3>
+                <h3>Wind: </h3>
+                <h3>Humidity: </h3>
+            </div>
+        </section>
+    </div>
+
+
+    <script src="./Assets/script.js"></script>
+
 </body>
+
 </html>
