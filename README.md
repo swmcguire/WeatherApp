@@ -20,6 +20,8 @@ No installation necessary, simply navigate to the correct web site and begin by 
 
 No usage instructions necessary, the webiste was designed with simplicy and ease in mind.  Begin by entering a city in the search box or click a pre-selected city and get the weather results.
 
+Website found here:   https://swmcguire.github.io/WeatherApp/
+
 ![alt text](assets/images/screenshot.png)
 
 ## Credits
