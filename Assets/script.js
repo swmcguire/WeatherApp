@@ -1,53 +1,84 @@
+var searchBtn = document.querySelector("#searchBtn");
+var searchField = document.querySelector("#searchField");
+var buttonClickEl = document.getElementById("button")
+
+
+var buttonClickHandler = function(event){
+  var cityName = event.target.textContent;
+  console.log(cityName);
+}
+
 
 //-----------------------------------------------------GEO-LOCATER-----------------------------------------------------//
 
 ////what needs to go in the function here? 
-//var getlatLon = function () {
-  var cityName = 'minneapolis';
-  var geoURL = 'http://api.openweathermap.org/geo/1.0/direct?q\=' + cityName + '&limit=1&appid=a8b255a467db2ae7a256c9499b3b3509';
+var getLatLon = function (event) {
+  event.preventDefault();
 
-  fetch(geoURL)
+  var cityName = searchField.value.trim();
+
+  if (cityName && cityName.length > 0) {
+    var geoURL = 'http://api.openweathermap.org/geo/1.0/direct?q\=' + cityName + '&limit=1&appid=a8b255a467db2ae7a256c9499b3b3509';
+  
+    fetch(geoURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        //console.log(data);
+        lat = (data[0].lat);
+        lon = (data[0].lon);
+        latLon = "lat=" + lat + "&lon=" + lon;
+        //console.log(lat);
+        //console.log(lon);
+       // onsole.log(latLon);
+        fetchWeather(lat, lon);
+      });
+  };
+};
+
+searchBtn.addEventListener("click", getLatLon);
+
+//-----------------------------------------------------CURRENT WEATHER-----------------------------------------------------//
+
+
+function fetchWeather(lat, lon) {
+  // var latLon = 'lat=44.9772995&lon=-93.2654692';
+  var latLon = "lat=" + lat + "&lon=" + lon;
+  var currentWeather = 'https://api.openweathermap.org/data/2.5/weather?' + latLon + '&appid=a8b255a467db2ae7a256c9499b3b3509&units=imperial';
+
+  fetch(currentWeather)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      //console.log(data);
-      lat = (data[0].lat);
-      lon = (data[0].lon);
-      latLon = "lat=" + lat + "&lon=" + lon;
-      console.log(lat);
-      console.log(lon);
-      console.log(latLon);
-      //return latLon;
+      console.log(data);
+      date = new Date().format('DD/MM/YYY');
+      city = (data.name) + date;
+      temp = (data.main.temp) + " F";
+      wind = (data.wind.speed) + " MPH";
+      humidity = (data.main.humidity) + " %";
+      console.log(date);
+      console.log(city);
+      console.log(temp);
+      console.log(wind);
+      console.log(humidity);
+
+      // Add data to the DOM / show it to the user
+
+      //document.getElementById('city');
+      //document.getElementById('curTemp');
+      //document.getElementById('curWind');
+      //document.getElementById('curHum');
+
     });
-//};
-//console.log(getlatLon());
-
-//-----------------------------------------------------CURRENT WEATHER-----------------------------------------------------//
-
-var latLon = 'lat=44.9772995&lon=-93.2654692';
-var currentWeather = 'https://api.openweathermap.org/data/2.5/weather?' + latLon + '&appid=a8b255a467db2ae7a256c9499b3b3509&units=imperial';
-
-fetch(currentWeather)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    //console.log(data);
-    temp = (data.main.temp) + " F";
-    wind = (data.wind.speed) + " MPH";
-    humidity = (data.main.humidity) + " %";
-    console.log(temp);
-    console.log(wind);
-    console.log(humidity);
-
-  });
-
-
+}
 
 //-----------------------------------------------------5 Day/ 3Hr WEATHER-----------------------------------------------------//
 
-var latLon = 'lat=44.9772995&lon=-93.2654692';
+/*
+function fetchWeather(lat, lon) {
+var latLon = "lat=" + lat + "&lon=" + lon;
 var futureWeather = 'https://api.openweathermap.org/data/2.5/forecast?' + latLon + '&appid=a8b255a467db2ae7a256c9499b3b3509&units=imperial';
 
 fetch(futureWeather)
@@ -100,14 +131,8 @@ fetch(futureWeather)
 
   });
 
+}
 
-
-/*
---When I enter a city name and click 'search' --- the variable gets stored in cityName 
---The GeoLocator then uses that variable to call the API to get latitude and longitude.
---That latitude and longitued get passed to the current weather and 5 day weather API
---That data gets called to the screen 
-
---when I click on a preselected city button, that city name populates cityName variable and runs the same as above
+buttonClickEl.addEventListener("click", buttonClickHandler);
 
 */

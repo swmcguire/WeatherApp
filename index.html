@@ -20,11 +20,11 @@
 
         <section class="block column">
             <h1>Choose a City:</h1>
-            <textarea></textarea>
-            <button class="button is-dark btn" id="aBtn">Search</button>
+            <input id="searchField" type="text" placeholder="Search for a city..." />
+            <button class="button is-dark btn" id="searchBtn">Search</button>
         </section>
 
-        <section class="block">
+        <section class="block" id = "button">
             <button class="button is-dark btn" id="atlBtn">Atlanta</button>
             <button class="button is-dark btn" id="chiBtn">Chicago</button>
             <button class="button is-dark btn" id="dalBtn">Dallas</button>
@@ -38,10 +38,10 @@
 
     <div class="box columns is-flex-direction-column is-align-items-center">
         <section class="block column">
-            <h1>City Name (Date)</h1>
-            <h3>Current Temp: </h3>
-            <h3>Current Wind: </h3>
-            <h3>Current Humidity: </h3>
+            <h1 id = "city">City Name (Date)</h1>
+            <h3 id = "curTemp">Current Temp: </h3>
+            <h3 id = "curWind">Current Wind: </h3>
+            <h3 id = "curHum">Current Humidity: </h3>
         </section>
 
         <section class="block columns box">
