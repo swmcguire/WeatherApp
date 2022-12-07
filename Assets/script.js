@@ -11,7 +11,6 @@ var buttonClickHandler = function(event){
 
 //-----------------------------------------------------GEO-LOCATER-----------------------------------------------------//
 
-////what needs to go in the function here? 
 var getLatLon = function (event) {
   event.preventDefault();
 
@@ -53,30 +52,36 @@ function fetchWeather(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
-      date = new Date().format('DD/MM/YYY');
-      city = (data.name) + date;
+      date = new Date();
+      day = date.getDate();
+      month = date.getMonth();
+      year = date.getFullYear();
+      curDate = month + "/" + day + "/" + year;
+      city = (data.name) + " - " + curDate;
       temp = (data.main.temp) + " F";
       wind = (data.wind.speed) + " MPH";
       humidity = (data.main.humidity) + " %";
+      icon = (data.weather[0].icon);
+      console.log(icon);
       console.log(date);
       console.log(city);
       console.log(temp);
       console.log(wind);
       console.log(humidity);
 
-      // Add data to the DOM / show it to the user
-
-      //document.getElementById('city');
-      //document.getElementById('curTemp');
-      //document.getElementById('curWind');
-      //document.getElementById('curHum');
+      document.getElementById('city').innerHTML = "<b>City Name:</b>  " + city;
+      document.getElementById('icon').innerHTML = "icon";
+      document.getElementById('curTemp').innerHTML = "<b>Current Temperature:</b>  " + temp;
+      document.getElementById('curWind').innerHTML = "<b>Current Wind:</b>  " + wind;
+      document.getElementById('curHum').innerHTML = "<b>Current Humidity:</b>  " + humidity;
 
     });
-}
+  };
+  
 
 //-----------------------------------------------------5 Day/ 3Hr WEATHER-----------------------------------------------------//
 
-/*
+
 function fetchWeather(lat, lon) {
 var latLon = "lat=" + lat + "&lon=" + lon;
 var futureWeather = 'https://api.openweathermap.org/data/2.5/forecast?' + latLon + '&appid=a8b255a467db2ae7a256c9499b3b3509&units=imperial';
@@ -129,10 +134,34 @@ fetch(futureWeather)
     console.log(wind5);
     console.log(humidity5);
 
+    document.getElementById('date1').innerHTML = "<b>Date:</b>  " + date1;
+    document.getElementById('temp1').innerHTML = "<b>Temperature:</b>  " + temp1;
+    document.getElementById('wind1').innerHTML = "<b>Wind:</b>  " + wind1;
+    document.getElementById('hum1').innerHTML = "<b>Humidity:</b>  " + humidity1;
+
+    document.getElementById('date2').innerHTML = "<b>Date:</b>  " + date2;
+    document.getElementById('temp2').innerHTML = "<b>Temperature:</b>  " + temp2;
+    document.getElementById('wind2').innerHTML = "<b>Wind:</b>  " + wind2;
+    document.getElementById('hum2').innerHTML = "<b>Humidity:</b>  " + humidity2;
+
+    document.getElementById('date3').innerHTML = "<b>Date:</b>  " + date3;
+    document.getElementById('temp3').innerHTML = "<b>Temperature:</b>  " + temp3;
+    document.getElementById('wind3').innerHTML = "<b>Wind:</b>  " + wind3;
+    document.getElementById('hum3').innerHTML = "<b>Humidity:</b>  " + humidity3;
+
+    document.getElementById('date4').innerHTML = "<b>Date:</b>  " + date4;
+    document.getElementById('temp4').innerHTML = "<b>Temperature:</b>  " + temp4;
+    document.getElementById('wind4').innerHTML = "<b>Wind:</b>  " + wind4;
+    document.getElementById('hum4').innerHTML = "<b>Humidity:</b>  " + humidity4;
+
+    document.getElementById('date5').innerHTML = "<b>Date:</b>  " + date5;
+    document.getElementById('temp5').innerHTML = "<b>Temperature:</b>  " + temp5;
+    document.getElementById('wind5').innerHTML = "<b>Wind:</b>  " + wind5;
+    document.getElementById('hum5').innerHTML = "<b>Humidity:</b>  " + humidity5;
+
   });
 
-}
+};
 
 buttonClickEl.addEventListener("click", buttonClickHandler);
 
-*/

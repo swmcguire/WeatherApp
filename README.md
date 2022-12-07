@@ -22,7 +22,7 @@ No usage instructions necessary, the webiste was designed with simplicy and ease
 
 Website found here:   https://swmcguire.github.io/WeatherApp/
 
-![alt text](assets/images/screenshot.png)
+![Initial Weather Screen](./Assets/Images/WeatherApp1.PNG)
 
 ## Credits
 
