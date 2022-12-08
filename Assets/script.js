@@ -2,12 +2,10 @@ var searchBtn = document.querySelector("#searchBtn");
 var searchField = document.querySelector("#searchField");
 var buttonClickEl = document.getElementById("button")
 
-
 var buttonClickHandler = function(event){
   var cityName = event.target.textContent;
   console.log(cityName);
 }
-
 
 //-----------------------------------------------------GEO-LOCATER-----------------------------------------------------//
 
@@ -37,8 +35,8 @@ var getLatLon = function (event) {
 
 searchBtn.addEventListener("click", getLatLon);
 
-//-----------------------------------------------------CURRENT WEATHER-----------------------------------------------------//
 
+//-----------------------------------------------------CURRENT WEATHER-----------------------------------------------------//
 
 function fetchCurrentWeather(lat, lon) {
   // var latLon = 'lat=44.9772995&lon=-93.2654692';
@@ -74,7 +72,6 @@ function fetchCurrentWeather(lat, lon) {
   
 
 //-----------------------------------------------------5 Day/ 3Hr WEATHER-----------------------------------------------------//
-
 
 function fetchWeatherForecast(lat, lon) {
 var latLon = "lat=" + lat + "&lon=" + lon;
