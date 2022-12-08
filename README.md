@@ -23,6 +23,7 @@ No usage instructions necessary, the webiste was designed with simplicy and ease
 Website found here:   https://swmcguire.github.io/WeatherApp/
 
 ![Initial Weather Screen](./Assets/Images/WeatherApp1.PNG)
+![Minneapolis Weather Screen](./Assets/Images/WeatherApp2.PNG)
 
 ## Credits
 
