@@ -17,7 +17,7 @@ var getLatLon = function (event) {
   var cityName = searchField.value.trim();
 
   if (cityName && cityName.length > 0) {
-    var geoURL = 'http://api.openweathermap.org/geo/1.0/direct?q\=' + cityName + '&limit=1&appid=a8b255a467db2ae7a256c9499b3b3509';
+    var geoURL = 'https://api.openweathermap.org/geo/1.0/direct?q\=' + cityName + '&limit=1&appid=a8b255a467db2ae7a256c9499b3b3509';
   
     fetch(geoURL)
       .then(function (response) {
