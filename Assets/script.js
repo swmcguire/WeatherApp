@@ -1,22 +1,24 @@
 var searchBtn = document.querySelector("#searchBtn");
 var searchField = document.querySelector("#searchField");
-var buttonClickEl = document.getElementById("button")
+var buttonClickEl = document.getElementById("button");
+var pastCityNames = [];
 
 var buttonClickHandler = function(event){
   var cityName = event.target.textContent;
   console.log(cityName);
 }
 
+
 //-----------------------------------------------------GEO-LOCATER-----------------------------------------------------//
 
 var getLatLon = function (event) {
   event.preventDefault();
-
-  var cityName = searchField.value.trim();
+  //var pastCityNames = [];
+  cityName = searchField.value.trim();
 
   if (cityName && cityName.length > 0) {
     var geoURL = 'https://api.openweathermap.org/geo/1.0/direct?q\=' + cityName + '&limit=1&appid=a8b255a467db2ae7a256c9499b3b3509';
-  
+
     fetch(geoURL)
       .then(function (response) {
         return response.json();
@@ -27,11 +29,19 @@ var getLatLon = function (event) {
         lon = (data[0].lon);
         latLon = "lat=" + lat + "&lon=" + lon;
         
+        pastCityNames.push(cityName);
+        localStorage.setItem('pastCity',JSON.stringify(pastCityNames));
+        
         fetchCurrentWeather(lat, lon);
         fetchWeatherForecast(lat, lon);
+        
+
+
+
       });
   };
 };
+
 
 searchBtn.addEventListener("click", getLatLon);
 
@@ -68,7 +78,7 @@ function fetchCurrentWeather(lat, lon) {
       document.getElementById('curHum').innerHTML = "<b>Current Humidity:</b>  " + humidity;
 
     });
-  };
+  }
   
 
 //-----------------------------------------------------5 Day/ 3Hr WEATHER-----------------------------------------------------//
@@ -83,6 +93,18 @@ fetch(futureWeather)
   })
   .then(function (data) {
     //console.log(data);
+    
+    var newClass1 = document.getElementById('box1');
+    newClass1.setAttribute("class", "block box");
+    var newClass2 = document.getElementById('box2');
+    newClass2.setAttribute("class", "block box");
+    var newClass3 = document.getElementById('box3');
+    newClass3.setAttribute("class", "block box");
+    var newClass4 = document.getElementById('box4');
+    newClass4.setAttribute("class", "block box");
+    var newClass5 = document.getElementById('box5');
+    newClass5.setAttribute("class", "block box");
+    
     date1 = (data.list[4].dt_txt);
     icon1 = 'https://openweathermap.org/img/wn/' + (data.list[4].weather[0].icon) + '.png';
     altTag1 = (data.list[4].weather[0].description);
@@ -143,6 +165,18 @@ fetch(futureWeather)
     document.getElementById('temp5').innerHTML = "<b>Temperature:</b>  " + temp5;
     document.getElementById('wind5').innerHTML = "<b>Wind:</b>  " + wind5;
     document.getElementById('hum5').innerHTML = "<b>Humidity:</b>  " + humidity5;
+
+    var memCity = JSON.parse(localStorage.getItem('pastCity'));
+    console.log(memCity);
+
+    var i = 0;
+
+    for (let i = 0; i < memCity.length; i++) {
+      document.getElementById('button').innerHTML = "<button class=\"button is-dark btn\" id=\"Btn" + i + "\"></button>";
+      document.getElementById('Btn'+ [i]).innerHTML = memCity[i];
+    };
+    
+    
 
   });
 
